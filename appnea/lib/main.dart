@@ -1,4 +1,5 @@
 import 'package:appnea/screens/home.dart';
+import 'package:appnea/screens/questions/textonly.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -73,7 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
-                onPressed: () {},
+                onPressed: () {Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const QuestionPage(questNum: '1',
+                          questText: "Porqué estamos aquí, solo para sufrir",
+                          entries: ['Porque si','No','a'],
+                          colorCodes: [600,600,600],)));
+                  },
                 child: const Text(
                   'Boton2',
                 ),
