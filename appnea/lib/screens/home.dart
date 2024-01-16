@@ -1,3 +1,5 @@
+import 'package:appnea/widgets/composed_button.dart';
+import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,9 +8,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home"),
-      ),
-      body: const Placeholder(),
+      appBar: AppBar(flexibleSpace: const CustomAppBar(),),
+      body: const ComposedButton(),
     );
   }
 }
