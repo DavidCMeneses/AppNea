@@ -52,19 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const QuestionPage(
-                                questNum: '1',
-                                questText:
-                                    "Porqué estamos aquí, solo para sufrir",
-                                entries: ['Porque si', 'No', 'a'],
-                                colorCodes: [600, 600, 600],
-                                answerValues: [1,1,1],
-                              )));
-                },
+                onPressed: () {context.go('/test/7');},
                 child: const Text(
                   'Boton2',
                 ),
