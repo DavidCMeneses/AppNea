@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(flexibleSpace: const CustomAppBar(prev: '/' ,next: '/',),),
+      appBar: AppBar(flexibleSpace: const CustomAppBar(),),
       body: const ComposedButton(),
     );
   }
