@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final String prev;
+  final String next;
+
+  const CustomAppBar({super.key,
+                      required this.prev,
+                      required this.next});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +16,13 @@ class CustomAppBar extends StatelessWidget {
         child: Row(children: [
           Expanded(
               child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.arrow_back_ios))),
+                  onPressed: () {context.go(prev);}, icon: const Icon(Icons.arrow_back_ios))),
           Expanded(
               child: IconButton(
                   onPressed: () {context.go('/');}, icon: const Icon(Icons.home_rounded))),
           Expanded(
               child: IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.arrow_forward_ios)))
+                  onPressed: () {context.go(next);}, icon: const Icon(Icons.arrow_forward_ios)))
         ]));
   }
 }

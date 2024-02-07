@@ -62,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     "Porqué estamos aquí, solo para sufrir",
                                 entries: ['Porque si', 'No', 'a'],
                                 colorCodes: [600, 600, 600],
+                                answerValues: [1,1,1],
                               )));
                 },
                 child: const Text(

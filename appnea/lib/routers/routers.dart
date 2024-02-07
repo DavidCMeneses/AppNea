@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:appnea/screens/home.dart';
 import 'package:appnea/screens/m_menu.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +27,7 @@ final router = GoRouter(
         "¿El paciente fuma?",
         entries: ['Si', 'A veces', 'No'],
         colorCodes: [600, 600, 600],
+        answerValues: [2,1,0],
       ),
     ),
     GoRoute(
@@ -40,6 +39,7 @@ final router = GoRouter(
         "¿El paciente bebe alcohol frecuentemente?",
         entries: ['Si', 'No'],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -51,6 +51,7 @@ final router = GoRouter(
         "¿El paciente es respirador oral?",
         entries: ['Si', 'No'],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -62,6 +63,7 @@ final router = GoRouter(
         "¿El paciente tiene periodontitis?",
         entries: ['Si', 'No'],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -73,6 +75,7 @@ final router = GoRouter(
         "¿El paciente tiene bruxismo?",
         entries: ['Si', 'No'],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -84,6 +87,7 @@ final router = GoRouter(
         "¿El paciente es edéntulo total?",
         entries: ['Si', 'No'],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -95,6 +99,7 @@ final router = GoRouter(
         "Tamaño y posición de la mandíbula:",
         entries: ['Micrognatismo mandibular', 'Retrognatismo mandibular', 'Sin alteraciones'],
         colorCodes: [600, 600, 600],
+        answerValues: [1,1,0],
       ),
     ),
     // Aquí emíeza el cuestionario de Berlín
@@ -107,6 +112,7 @@ final router = GoRouter(
         "En los últimos 5 años su peso ha:",
         entries: ['Aumentado', 'Disminuido', 'No ha cambiado'],
         colorCodes: [600, 600, 600],
+        answerValues: [2,1,0],
       ),
     ),
     GoRoute(
@@ -118,6 +124,7 @@ final router = GoRouter(
         "¿Usted ronca?",
         entries: ['Si', 'No', 'No sé'],
         colorCodes: [600, 600, 600],
+        answerValues: [1,0,0],
       ),
     ),
     GoRoute(
@@ -134,6 +141,7 @@ final router = GoRouter(
           'Muy fuerte'
         ],
         colorCodes: [600, 600, 600, 600],
+        answerValues: [0,1,2,3],
       ),
     ),
     GoRoute(
@@ -151,6 +159,7 @@ final router = GoRouter(
           'Nunca o casi nunca'
         ],
         colorCodes: [600, 600, 600, 600, 600],
+        answerValues: [4,3,2,1,0],
       ),
     ),
     GoRoute(
@@ -162,6 +171,7 @@ final router = GoRouter(
         "¿Alguna vez su ronquido ha molestado a otras personas?",
         entries: ['Si', 'No', 'No sé'],
         colorCodes: [600, 600, 600],
+        answerValues: [1,0,0],
       ),
     ),
     GoRoute(
@@ -179,6 +189,7 @@ final router = GoRouter(
           'Nunca o casi nunca'
         ],
         colorCodes: [600, 600, 600, 600, 600],
+        answerValues: [4,3,2,1,0],
       ),
     ),
     GoRoute(
@@ -196,6 +207,7 @@ final router = GoRouter(
           'Nunca o casi nunca'
         ],
         colorCodes: [600, 600, 600, 600, 600],
+        answerValues: [4,3,2,1,0],
       ),
     ),
     GoRoute(
@@ -213,6 +225,7 @@ final router = GoRouter(
           'Nunca o casi nunca'
         ],
         colorCodes: [600, 600, 600, 600, 600],
+        answerValues: [4,3,2,1,0],
       ),
     ),
     GoRoute(
@@ -227,6 +240,7 @@ final router = GoRouter(
           'No'
         ],
         colorCodes: [600, 600],
+        answerValues: [1,0],
       ),
     ),
     GoRoute(
@@ -244,6 +258,7 @@ final router = GoRouter(
           'Nunca o casi nunca'
         ],
         colorCodes: [600, 600, 600, 600, 600],
+        answerValues: [4,3,2,1,0],
       ),
     ),
     GoRoute(
@@ -255,6 +270,7 @@ final router = GoRouter(
         "¿Usted tiene la presión arterial alta?",
         entries: ['Si', 'No', 'No sé'],
         colorCodes: [600, 600, 600],
+        answerValues: [1,0,0],
       ),
     ),
   ],
