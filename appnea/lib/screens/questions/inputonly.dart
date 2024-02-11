@@ -1,15 +1,22 @@
 import 'package:appnea/globals.dart';
 import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class InputPage extends StatelessWidget {
   final String questNum;
   final String questText;
+  final String inType;
+  final String back;
+  final String next;
 
   const InputPage(
       {super.key,
       required this.questNum,
-      required this.questText}
+      required this.questText,
+      required this.inType,
+      required this.back,
+      required this.next}
     );
 
   @override
@@ -21,17 +28,24 @@ class InputPage extends StatelessWidget {
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
       body: Column(children: [
-        Text(questText),
+        Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(questText),),
         const Padding(padding: EdgeInsets.all(20)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: TextFormField(
             onFieldSubmitted: (String value) async {
               try {
-                int.parse(value);
-              } catch (value) {
-                print(value);
-              }
+                if(inType == 'Int'){
+                  testlist.insert(int.parse(questNum) - 1, int.parse(value).toString());
+                }
+                else if (inType == 'Float') {
+                  testlist.insert(int.parse(questNum) - 1, double.parse(value).toString());
+                } else {
+                  testlist.insert(int.parse(questNum) - 1, value);
+
+                }
+              } catch (value) {}
             }
             ,
           ),
@@ -49,7 +63,7 @@ class InputPage extends StatelessWidget {
                   heroTag: "Backward",
                   backgroundColor: const Color(0xffa1e8af),
                   onPressed: () {
-                    // Add your onPressed code here!
+                    context.go(back);// Add your onPressed code here!
                   },
                   shape: const CircleBorder(),
                   child: const Center(
@@ -61,7 +75,7 @@ class InputPage extends StatelessWidget {
                   heroTag: "Forward",
                   backgroundColor: const Color(0xffa1e8af),
                   onPressed: () {
-                    // Add your onPressed code here!
+                    context.go(next);// Add your onPressed code here!
                   },
                   shape: const CircleBorder(),
                   child: const Icon(

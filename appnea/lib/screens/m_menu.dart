@@ -18,21 +18,20 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text('Appnea'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Sample image',
+              '(Sample Logo)',
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width - 50,
               height: 200,
               child: const Image(
-                  image: NetworkImage(
-                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')),
+                  image: ExactAssetImage('lib/images/sample_logo.jpg')),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             SizedBox(
@@ -40,10 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
                 onPressed: () {
-                  context.go('/home');
+                  context.go('/test/1');
                 },
                 child: const Text(
-                  'Boton',
+                  'Continuar',
                 ),
               ),
             ),
@@ -52,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
-                onPressed: () {context.go('/test/7.5');},
+                onPressed: () {context.go('/home');},
                 child: const Text(
-                  'Boton2',
+                  'Info',
                 ),
               ),
             )

@@ -4,24 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-class QuestionPage extends StatelessWidget {
+class ImagePage extends StatelessWidget {
   final String questNum;
   final String questText;
   final List<String> entries;
-  final List<int> colorCodes;
   final List<int> answerValues;
   final String back;
   final String next;
 
-  const QuestionPage({super.key,
-                required this.questNum,
-                required this.questText,
-                required this.entries,
-                required this.colorCodes,
-                required this.answerValues,
-                required this.back,
-                required this.next
-                });
+  const ImagePage({super.key,
+    required this.questNum,
+    required this.questText,
+    required this.entries,
+    required this.answerValues,
+    required this.back,
+    required this.next});
 
   @override
   Widget build(BuildContext context) {
@@ -30,28 +27,31 @@ class QuestionPage extends StatelessWidget {
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
       body: Column(
-        children: [Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(questText),),
-          const Padding(padding: EdgeInsets.all(20)),
-          ListView.separated(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(20),
-            itemCount: entries.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                height: 50,
-                color: Colors.amber[colorCodes[index]],
-                child: Center(child: TextButton(onPressed: () => {
-                  testlist.insert(int.parse(questNum) - 1,'${answerValues[index]}')
-                },
-                    child: Text(entries[index]))),
-            );
-          },
-            separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
-          ),
-        
-        ]
+          children: [Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(questText),),
+            const Padding(padding: EdgeInsets.all(20)),
+            ListView.separated(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(20),
+              itemCount: entries.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: ExactAssetImage(entries[index]),
+                    fit: BoxFit.fitHeight)
+                  ),
+                  child: Center(child: TextButton(onPressed: () => {
+                    testlist.insert(int.parse(questNum) - 1,'${answerValues[index]}')
+                  },
+                      child: const Text(''))),
+                );
+              },
+              separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
+            ),
+
+          ]
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
@@ -68,7 +68,7 @@ class QuestionPage extends StatelessWidget {
                 },
                 shape: const CircleBorder(),
                 child: const Center(child: Icon(Icons.arrow_back_ios_rounded, color: Color(0xff000000))),
-                
+
               ),
               Expanded(child: Container()),
               FloatingActionButton(
@@ -80,7 +80,7 @@ class QuestionPage extends StatelessWidget {
                 shape: const CircleBorder(),
                 child: const Icon(Icons.arrow_forward_ios_rounded, color: Color(0xff000000),),
               ),
-              ],),
+            ],),
           ),
         ),
       ),
