@@ -1,5 +1,6 @@
 import 'package:appnea/screens/home.dart';
 import 'package:appnea/screens/m_menu.dart';
+import 'package:appnea/screens/questions/inputonly.dart';
 import 'package:go_router/go_router.dart';
 import 'package:appnea/screens/questions/textonly.dart';
 
@@ -28,6 +29,15 @@ final router = GoRouter(
         entries: ['Si', 'A veces', 'No'],
         colorCodes: [600, 600, 600],
         answerValues: [2,1,0],
+      ),
+    ),
+    GoRoute(
+      name: 'question7.5',
+      path: '/test/7.5',
+      builder: (context, state) => const InputPage(
+        questNum: '75',
+        questText:
+        "¿El paciente fuma?",
       ),
     ),
     GoRoute(

@@ -38,7 +38,7 @@ class QuestionPage extends StatelessWidget {
                 child: Center(child: TextButton(onPressed: () => {
                   testlist.add('${answerValues[index]}')
                 },
-                    child: Text('Entry ${entries[index]}'))),
+                    child: Text('${entries[index]}'))),
             );
           },
             separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app

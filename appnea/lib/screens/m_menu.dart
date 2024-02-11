@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 100,
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
-                onPressed: () {context.go('/test/7');},
+                onPressed: () {context.go('/test/7.5');},
                 child: const Text(
                   'Boton2',
                 ),
