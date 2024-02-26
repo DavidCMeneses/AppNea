@@ -26,7 +26,9 @@ class QuestionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(flexibleSpace: const CustomAppBar(),),
+      appBar: AppBar(
+        backgroundColor:  const Color.fromARGB(255, 238, 241, 239),
+        flexibleSpace: const CustomAppBar(),),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
       body: Column(
@@ -41,11 +43,14 @@ class QuestionPage extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 height: 50,
-                color: Colors.amber[colorCodes[index]],
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20.0),
+                  color: const Color(0xffa9b4c2),
+                  ),
                 child: Center(child: TextButton(onPressed: () => {
                   testlist.insert(int.parse(questNum) - 1,'${answerValues[index]}')
                 },
-                    child: Text(entries[index]))),
+                    child: Text(entries[index], style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),))),
             );
           },
             separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
@@ -56,13 +61,14 @@ class QuestionPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: BottomAppBar(
+          color:  const Color.fromARGB(255, 238, 241, 239),
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(children: [
               FloatingActionButton(
                 heroTag: "Backward",
-                backgroundColor: const Color(0xffa1e8af),
+                backgroundColor: const Color(0xffa9b4c2),
                 onPressed: () {
                   context.go(back);// Add your onPressed code here!
                 },
@@ -73,7 +79,7 @@ class QuestionPage extends StatelessWidget {
               Expanded(child: Container()),
               FloatingActionButton(
                 heroTag: "Forward",
-                backgroundColor: const Color(0xffa1e8af),
+                backgroundColor: const Color(0xffa9b4c2),
                 onPressed: () {
                   context.go(next);// Add your onPressed code here!
                 },

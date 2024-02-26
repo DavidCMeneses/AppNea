@@ -23,6 +23,7 @@ class InputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor:  const Color.fromARGB(255, 238, 241, 239),
         flexibleSpace: const CustomAppBar(),
       ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
@@ -54,6 +55,7 @@ class InputPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: BottomAppBar(
+          color:   const Color.fromARGB(255, 238, 241, 239),
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -61,7 +63,7 @@ class InputPage extends StatelessWidget {
               children: [
                 FloatingActionButton(
                   heroTag: "Backward",
-                  backgroundColor: const Color(0xffa1e8af),
+                  backgroundColor: const Color(0xffa9b4c2),
                   onPressed: () {
                     context.go(back);// Add your onPressed code here!
                   },
@@ -73,7 +75,7 @@ class InputPage extends StatelessWidget {
                 Expanded(child: Container()),
                 FloatingActionButton(
                   heroTag: "Forward",
-                  backgroundColor: const Color(0xffa1e8af),
+                  backgroundColor: const Color(0xffa9b4c2),
                   onPressed: () {
                     context.go(next);// Add your onPressed code here!
                   },

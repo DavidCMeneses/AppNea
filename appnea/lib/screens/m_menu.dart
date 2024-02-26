@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:appnea/screens/home.dart';
-import 'package:appnea/screens/questions/textonly.dart';
 import 'package:go_router/go_router.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -18,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Appnea'),
+        title: const Text('Appnea'),
       ),
       body: Center(
         child: Column(

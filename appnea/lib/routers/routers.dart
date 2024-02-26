@@ -187,8 +187,10 @@ final router = GoRouter(
         questText:
         "Clasificación de Friedman:",
         entries: ['lib/images/Friedman_0.jpg',
-                  'lib/images/Friedman_1.jpg',],
-        answerValues: [1,0],
+                  'lib/images/Friedman_1.jpg',
+                  'lib/images/Friedman_2.jpg',
+                  'lib/images/Friedman_3.jpg',],
+        answerValues: [3,2,1,0],
         back: '/test/12',
         next: '/test/16',
       ),

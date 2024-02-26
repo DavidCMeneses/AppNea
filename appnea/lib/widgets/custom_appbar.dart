@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: const Color(0xff274690),
+        color: const Color(0xff7D98A1),
         child: SafeArea(
           top: true,
           child: Padding(
