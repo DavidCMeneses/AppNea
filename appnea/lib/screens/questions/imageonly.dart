@@ -11,6 +11,7 @@ class ImagePage extends StatelessWidget {
   final List<int> answerValues;
   final String back;
   final String next;
+  final String infopage;
 
   const ImagePage({super.key,
     required this.questNum,
@@ -18,7 +19,8 @@ class ImagePage extends StatelessWidget {
     required this.entries,
     required this.answerValues,
     required this.back,
-    required this.next});
+    required this.next,
+    this.infopage = '/'});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class ImagePage extends StatelessWidget {
       body: ListView(
             children:  [
               Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(questText),),
+              child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center),),
               const Padding(padding: EdgeInsets.all(20)),
               ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),

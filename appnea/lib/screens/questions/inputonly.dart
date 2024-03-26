@@ -9,6 +9,7 @@ class InputPage extends StatelessWidget {
   final String inType;
   final String back;
   final String next;
+  final String infopage;
 
   const InputPage(
       {super.key,
@@ -16,7 +17,8 @@ class InputPage extends StatelessWidget {
       required this.questText,
       required this.inType,
       required this.back,
-      required this.next}
+      required this.next,
+      this.infopage = '/'}
     );
 
   @override
@@ -28,9 +30,12 @@ class InputPage extends StatelessWidget {
       ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
-      body: Column(children: [
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
         Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(questText),),
+          child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center,),),
         const Padding(padding: EdgeInsets.all(20)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),

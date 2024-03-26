@@ -12,6 +12,7 @@ class QuestionPage extends StatelessWidget {
   final List<int> answerValues;
   final String back;
   final String next;
+  final String infopage;
 
   const QuestionPage({super.key,
                 required this.questNum,
@@ -20,7 +21,8 @@ class QuestionPage extends StatelessWidget {
                 required this.colorCodes,
                 required this.answerValues,
                 required this.back,
-                required this.next
+                required this.next,
+                this.infopage = '/'
                 });
 
   @override
@@ -32,8 +34,10 @@ class QuestionPage extends StatelessWidget {
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(questText),),
+          child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center),),
           const Padding(padding: EdgeInsets.all(20)),
           ListView.separated(
             scrollDirection: Axis.vertical,
