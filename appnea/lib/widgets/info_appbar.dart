@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CustomAppBar extends StatelessWidget {
-  final String infoPage;
+class InfoAppBar extends StatelessWidget {
+  final String backPage;
 
-  const CustomAppBar(
+  const InfoAppBar(
       {super.key,
-        this.infoPage = '/'
+        required this.backPage
         ,});
 
   @override
@@ -19,11 +19,9 @@ class CustomAppBar extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(children: [
               IconButton(
-                  onPressed: () {context.go('/');}, icon: const Icon(Icons.home_rounded , color: Color(0xff000000))),
+                  onPressed: () {context.pop();}, icon: const Icon(Icons.arrow_back_ios_new_rounded , color: Color(0xff000000))),
               const Expanded(
                   child: Text('Appnea', textAlign: TextAlign.center, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic))),
-              IconButton(
-                  onPressed: () {context.push(infoPage);}, icon: const Icon(Icons.info , color: Color(0xff000000))),
             ]),
           ),
         ));

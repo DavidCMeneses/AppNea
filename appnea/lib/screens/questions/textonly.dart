@@ -7,7 +7,6 @@ class QuestionPage extends StatelessWidget {
   final String questNum;
   final String questText;
   final List<String> entries;
-  final List<int> colorCodes;
   final List<int> answerValues;
   final String back;
   final String next;
@@ -18,7 +17,6 @@ class QuestionPage extends StatelessWidget {
       required this.questNum,
       required this.questText,
       required this.entries,
-      required this.colorCodes,
       required this.answerValues,
       required this.back,
       required this.next,
@@ -29,7 +27,7 @@ class QuestionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 238, 241, 239),
-        flexibleSpace: const CustomAppBar(),
+        flexibleSpace: CustomAppBar(infoPage: infopage,),
       ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),

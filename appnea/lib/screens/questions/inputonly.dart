@@ -26,6 +26,7 @@ class InputPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 238, 241, 239),
         flexibleSpace: const CustomAppBar(),
       ),

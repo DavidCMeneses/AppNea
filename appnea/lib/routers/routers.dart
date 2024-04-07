@@ -1,3 +1,4 @@
+import 'package:appnea/screens/Infos/questinfo.dart';
 import 'package:appnea/screens/home.dart';
 import 'package:appnea/screens/m_menu.dart';
 import 'package:appnea/screens/questions/inputonly.dart';
@@ -31,6 +32,7 @@ final router = GoRouter(
         inType: 'Text',
         back: '/',
         next: '/test/2',
+        sampleText: 'Nombre y apellidos',
       ),
     ),
     GoRoute(
@@ -43,6 +45,7 @@ final router = GoRouter(
         inType: 'Int',
         back: '/test/1',
         next: '/test/3',
+        sampleText: 'Ej: 54',
       ),
     ),
     GoRoute(
@@ -52,8 +55,7 @@ final router = GoRouter(
         questNum: '3',
         questText:
         "Sexo:",
-        entries: ['Hombre', 'Mujer'],
-        colorCodes: [600, 600],
+        entries: ['Masculino', 'Femenino'],
         answerValues: [2,1],
         back: '/test/2',
         next: '/test/4',
@@ -65,10 +67,11 @@ final router = GoRouter(
       builder: (context, state) => const InputPage(
         questNum: '4',
         questText:
-        "Estatura:",
-        inType: 'Int',
+        "Estatura (metros):",
+        inType: 'Float',
         back: '/test/3',
         next: '/test/5',
+        sampleText: 'Ej: 1.55',
       ),
     ),
     GoRoute(
@@ -77,10 +80,11 @@ final router = GoRouter(
       builder: (context, state) => const InputPage(
         questNum: '5',
         questText:
-        "Peso:",
+        "Peso (kg):",
         inType: 'Int',
         back: '/test/4',
         next: '/test/6',
+        sampleText: 'Ej: 60',
       ),
     ),
     GoRoute(
@@ -101,12 +105,12 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '7',
         questText:
-        "¿El paciente fuma?",
-        entries: ['Si', 'A veces', 'No'],
-        colorCodes: [600, 600, 600],
+        "¿El paciente es fumador?",
+        entries: ['Si, el paciente es fumador', 'El paciente es exfumador', 'No, el paciente no es fumador'],
         answerValues: [2,1,0],
         back: '/test/6',
         next: '/test/8',
+        infopage: '/test/info/1',
       ),
     ),
     GoRoute(
@@ -115,10 +119,12 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '8',
         questText:
-        "¿El paciente bebe alcohol frecuentemente?",
-        entries: ['Si', 'No'],
-        colorCodes: [600, 600],
-        answerValues: [1,0],
+        "Si el paciente es o fue fumador, ¿Cuántos paquetes de cigarrillos consume o solía consumir por año?",
+        entries: ['Más de 20 paquetes de cigarrillos por año',
+          'Entre 10 - 20 paquetes de cigarrillos por año',
+          'Menos de 10 paquetes de cigarrillos por año',
+          'No aplica'],
+        answerValues: [2,1,1,0],
         back: '/test/7',
         next: '/test/9',
       ),
@@ -129,10 +135,9 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '9',
         questText:
-        "¿El paciente es respirador oral?",
-        entries: ['Si', 'No'],
-        colorCodes: [600, 600],
-        answerValues: [1,0],
+        "¿El paciente ingiere bebidas alcohólicas?",
+        entries: ['Si, regularmente', 'Si, ocasionalmente', 'No, no consume alcohol'],
+        answerValues: [2,1,0],
         back: '/test/8',
         next: '/test/10',
       ),
@@ -143,9 +148,8 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '10',
         questText:
-        "¿El paciente tiene periodontitis?",
+        "¿El paciente tiene bruxismo?",
         entries: ['Si', 'No'],
-        colorCodes: [600, 600],
         answerValues: [1,0],
         back: '/test/9',
         next: '/test/11',
@@ -157,10 +161,9 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '11',
         questText:
-        "¿El paciente tiene bruxismo?",
+        "¿El paciente es edéntulo total?",
         entries: ['Si', 'No'],
-        colorCodes: [600, 600],
-        answerValues: [1,0],
+        answerValues: [2,0],
         back: '/test/10',
         next: '/test/12',
       ),
@@ -171,9 +174,8 @@ final router = GoRouter(
       builder: (context, state) => const QuestionPage(
         questNum: '12',
         questText:
-        "¿El paciente es edéntulo total?",
+        "¿El paciente presenta una alteración en el tamaño y posición de la mandíbula?",
         entries: ['Si', 'No'],
-        colorCodes: [600, 600],
         answerValues: [1,0],
         back: '/test/11',
         next: '/test/13',
@@ -185,64 +187,66 @@ final router = GoRouter(
       builder: (context, state) => const ImagePage(
         questNum: '13',
         questText:
-        "Clasificación de Friedman:",
-        entries: ['lib/images/Friedman_0.jpg',
-                  'lib/images/Friedman_1.jpg',
-                  'lib/images/Friedman_2.jpg',
-                  'lib/images/Friedman_3.jpg',],
-        answerValues: [3,2,1,0],
+        "Clasificación de Friedman (tamaño de la lengua):",
+        entries: ['lib/images/FriedmanL_1.jpg',
+          'lib/images/FriedmanL_2A.jpg',
+          'lib/images/FriedmanL_2B.jpg',
+          'lib/images/FriedmanL_3.png',
+          'lib/images/FriedmanL_4.jpg'],
+        answerValues: [0,0,0,2,2],
         back: '/test/12',
-        next: '/test/16',
+        next: '/test/14',
       ),
     ),
     GoRoute(
-      name: 'question16',
-      path: '/test/16',
-      builder: (context, state) => const QuestionPage(
-        questNum: '16',
+      name: 'question14',
+      path: '/test/14',
+      builder: (context, state) => const ImagePage(
+        questNum: '14',
         questText:
-        "Tamaño y posición de la mandíbula:",
-        entries: ['Micrognatismo mandibular', 'Retrognatismo mandibular', 'Sin alteraciones'],
-        colorCodes: [600, 600, 600],
-        answerValues: [1,1,0],
+        "Clasificación de Friedman (tamaño de las amigdalas):",
+        entries: ['lib/images/FriedmanA_0.jpg',
+          'lib/images/FriedmanA_1.jpg',
+          'lib/images/FriedmanA_2.jpg',
+          'lib/images/FriedmanA_3.jpg',
+          'lib/images/FriedmanA_4.jpg',],
+        answerValues: [0,0,0,2,2],
         back: '/test/13',
-        next: '/test/17',
+        next: '/test/15',
       ),
     ),
     // Aquí emíeza el cuestionario de Berlín
     GoRoute(
       name: 'questionB1',
-      path: '/test/17',
+      path: '/test/15',
       builder: (context, state) => const QuestionPage(
-        questNum: '17',
+        questNum: '15',
         questText:
         "En los últimos 5 años su peso ha:",
         entries: ['Aumentado', 'Disminuido', 'No ha cambiado'],
-        colorCodes: [600, 600, 600],
-        answerValues: [2,1,0],
-        back: '/test/16',
-        next: '/test/18',
+        answerValues: [0,0,0],
+        back: '/test/14',
+        next: '/test/16',
       ),
     ),
     GoRoute(
       name: 'questionB2',
-      path: '/test/18',
+      path: '/test/16',
       builder: (context, state) => const QuestionPage(
-        questNum: '18',
+        questNum: '16',
         questText:
         "¿Usted ronca?",
         entries: ['Si', 'No', 'No sé'],
-        colorCodes: [600, 600, 600],
         answerValues: [1,0,0],
-        back: '/test/17',
-        next: '/test/19',
+        back: '/test/15',
+        next: '/test/17',
       ),
     ),
     GoRoute(
       name: 'questionB3',
-      path: '/test/19',
+      path: '/test/17',
       builder: (context, state) => const QuestionPage(
-        questNum: '19',
+        questNum: '17',
         questText:
         "Su ronquido es (Si la respuesta anterior fue si)",
         entries: [
@@ -251,17 +255,16 @@ final router = GoRouter(
           'Más fuerte que hablar',
           'Muy fuerte'
         ],
-        colorCodes: [600, 600, 600, 600],
-        answerValues: [0,1,2,3],
-        back: '/test/18',
-        next: '/test/20',
+        answerValues: [0,0,1,1],
+        back: '/test/16',
+        next: '/test/18',
       ),
     ),
     GoRoute(
       name: 'questionB4',
-      path: '/test/20',
+      path: '/test/18',
       builder: (context, state) => const QuestionPage(
-        questNum: '20',
+        questNum: '18',
         questText:
         "¿Con qué frecuencia ronca?",
         entries: [
@@ -271,31 +274,29 @@ final router = GoRouter(
           '1-2 veces por mes',
           'Nunca o casi nunca'
         ],
-        colorCodes: [600, 600, 600, 600, 600],
-        answerValues: [4,3,2,1,0],
-        back: '/test/19',
-        next: '/test/21',
+        answerValues: [1,1,0,0,0],
+        back: '/test/17',
+        next: '/test/19',
       ),
     ),
     GoRoute(
       name: 'questionB5',
-      path: '/test/21',
+      path: '/test/19',
       builder: (context, state) => const QuestionPage(
-        questNum: '21',
+        questNum: '19',
         questText:
         "¿Alguna vez su ronquido ha molestado a otras personas?",
         entries: ['Si', 'No', 'No sé'],
-        colorCodes: [600, 600, 600],
         answerValues: [1,0,0],
-        back: '/test/20',
-        next: '/test/22',
+        back: '/test/18',
+        next: '/test/20',
       ),
     ),
     GoRoute(
       name: 'questionB6',
-      path: '/test/22',
+      path: '/test/20',
       builder: (context, state) => const QuestionPage(
-        questNum: '22',
+        questNum: '20',
         questText:
         "¿Alguien ha notado que usted deja de respirar cuando duerme?",
         entries: [
@@ -305,17 +306,16 @@ final router = GoRouter(
           '1-2 veces por mes',
           'Nunca o casi nunca'
         ],
-        colorCodes: [600, 600, 600, 600, 600],
-        answerValues: [4,3,2,1,0],
-        back: '/test/21',
-        next: '/test/23',
+        answerValues: [1,1,0,0,0],
+        back: '/test/19',
+        next: '/test/21',
       ),
     ),
     GoRoute(
       name: 'questionB7',
-      path: '/test/23',
+      path: '/test/21',
       builder: (context, state) => const QuestionPage(
-        questNum: '23',
+        questNum: '21',
         questText:
         "¿Se siente ahogado o fatigado al levantarse después de dormir?",
         entries: [
@@ -325,17 +325,16 @@ final router = GoRouter(
           '1-2 veces por mes',
           'Nunca o casi nunca'
         ],
-        colorCodes: [600, 600, 600, 600, 600],
-        answerValues: [4,3,2,1,0],
-        back: '/test/22',
-        next: '/test/24',
+        answerValues: [1,1,0,0,0],
+        back: '/test/20',
+        next: '/test/22',
       ),
     ),
     GoRoute(
       name: 'questionB8',
-      path: '/test/24',
+      path: '/test/22',
       builder: (context, state) => const QuestionPage(
-        questNum: '24',
+        questNum: '22',
         questText:
         "¿Se siente cansado o fatigado durante el día?",
         entries: [
@@ -345,34 +344,32 @@ final router = GoRouter(
           '1-2 veces por mes',
           'Nunca o casi nunca'
         ],
-        colorCodes: [600, 600, 600, 600, 600],
-        answerValues: [4,3,2,1,0],
-        back: '/test/23',
-        next: '/test/25',
+        answerValues: [1,1,0,0,0],
+        back: '/test/21',
+        next: '/test/23',
       ),
     ),
     GoRoute(
       name: 'questionB9',
-      path: '/test/25',
+      path: '/test/23',
       builder: (context, state) => const QuestionPage(
-        questNum: '25',
+        questNum: '23',
         questText:
         "¿Alguna vez se ha sentido somnoliento o se ha quedado dormido mientras va de pasajero en un auto o está conduciendo?",
         entries: [
           'Si',
           'No'
         ],
-        colorCodes: [600, 600],
-        answerValues: [1,0],
-        back: '/test/24',
-        next: '/test/26',
+        answerValues: [0,0],
+        back: '/test/22',
+        next: '/test/24',
       ),
     ),
     GoRoute(
       name: 'questionB10',
-      path: '/test/26',
+      path: '/test/24',
       builder: (context, state) => const QuestionPage(
-        questNum: '26',
+        questNum: '24',
         questText:
         "¿Con qué frecuencia ocurre esto? (Si la respuesta anterior es sí)",
         entries: [
@@ -382,25 +379,38 @@ final router = GoRouter(
           '1-2 veces por mes',
           'Nunca o casi nunca'
         ],
-        colorCodes: [600, 600, 600, 600, 600],
-        answerValues: [4,3,2,1,0],
-        back: '/test/25',
-        next: '/test/27',
+        answerValues: [1,1,0,0,0],
+        back: '/test/23',
+        next: '/test/25',
       ),
     ),
     GoRoute(
       name: 'questionB11',
-      path: '/test/27',
+      path: '/test/25',
       builder: (context, state) => const QuestionPage(
-        questNum: '27',
+        questNum: '25',
         questText:
         "¿Usted tiene la presión arterial alta?",
         entries: ['Si', 'No', 'No sé'],
-        colorCodes: [600, 600, 600],
         answerValues: [1,0,0],
-        back: '/test/26',
+        back: '/test/24',
         next: '/',
       ),
+    ),
+    GoRoute(
+      name: 'info1',
+      path: '/test/info/1',
+      builder: (context, state) => const QuestInfo(questPage: '/',
+          infoTitle: 'Paciente fumador',
+          infoBody: """       
+El tabaquismo se considera un factor de riesgo para el desarrollo de episodios de apnea dado que este hábito, de acuerdo a la frecuencia y a la cantidad con la que se realice, produce inflamación de las mucosas respiratorias, obstruyendo la vía aérea superior. (1)
+Los pacientes fumadores tienen el doble de probabilidad de desarrollar AOS que los pacientes que no fuman o dejaron dicho hábito. (2) \v
+
+Referencia \v
+\t 1. Yosunkaya S, Kutlu R, Vatansev H. Effects of smokıng on patıents wıth obstructıve sleep apnea syndrome. Clin Respir J. febrero de 2021;15(2):147-53. \v
+\t 2. Kashyap R, Bowman TJ. Higher Prevalence of Smoking in Patients Diagnosed as Having Obstructive Sleep Apnea. :6. 
+
+          """)
     ),
   ],
 );
