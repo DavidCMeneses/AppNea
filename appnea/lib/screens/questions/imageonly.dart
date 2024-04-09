@@ -8,6 +8,7 @@ class ImagePage extends StatelessWidget {
   final String questNum;
   final String questText;
   final List<String> entries;
+  final List<String> legends;
   final List<int> answerValues;
   final String back;
   final String next;
@@ -17,6 +18,7 @@ class ImagePage extends StatelessWidget {
     required this.questNum,
     required this.questText,
     required this.entries,
+    required this.legends,
     required this.answerValues,
     required this.back,
     required this.next,
@@ -36,26 +38,32 @@ class ImagePage extends StatelessWidget {
               Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center),),
               const Padding(padding: EdgeInsets.all(20)),
-              ListView.separated(
+              GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(20),
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(image: ExactAssetImage(entries[index]),
-                      fit: BoxFit.fitHeight)
-                    ),
-                    child: Center(child: TextButton(onPressed: () => {
+                  return Column(
+                      children: [Expanded(child:IconButton(
+                      iconSize: 200,
+                      padding: const EdgeInsets.all(0.5),
+                    icon: Image(
+                    image: ExactAssetImage(entries[index]),
+                    color: null,
+                    fit: BoxFit.scaleDown,
+                    alignment: Alignment.center,),
+                      onPressed: () => {
                       testlist.insert(int.parse(questNum) - 1,'${answerValues[index]}')
-                    },
-                        child: const Text(''))),
-                  );
+                    }
+                  )),
+                        Text(legends[index], style: const TextStyle(backgroundColor: Colors.blue)),]);
                 },
-                separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
+                //separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
               ),
         
             ]
