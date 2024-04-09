@@ -2,6 +2,7 @@ import 'package:appnea/screens/Infos/questinfo.dart';
 import 'package:appnea/screens/home.dart';
 import 'package:appnea/screens/m_menu.dart';
 import 'package:appnea/screens/questions/inputonly.dart';
+import 'package:appnea/screens/splash_s.dart';
 import 'package:go_router/go_router.dart';
 import 'package:appnea/screens/questions/textonly.dart';
 
@@ -9,8 +10,12 @@ import '../screens/questions/imageonly.dart';
 
 // GoRouter configuration
 final router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/splash',
   routes: [
+    GoRoute(
+      path: '/splash',
+      builder: (context,state) => SplashScreen(),
+    ),
     GoRoute(
       name: 'home', // Optional, add name to your routes. Allows you navigate by name instead of path
       path: '/',

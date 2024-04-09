@@ -1,3 +1,4 @@
+import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,8 +16,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Appnea'),
+        backgroundColor: const Color.fromARGB(255, 238, 241, 239),
+        flexibleSpace: const CustomAppBar(infoPage: '/test/info/0', house: false,),
       ),
       body: Center(
         child: Column(

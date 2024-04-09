@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String infoPage;
+  final bool house;
 
-  const CustomAppBar(
-      {super.key,
-        this.infoPage = '/'
-        ,});
+  const CustomAppBar({
+    super.key,
+    this.infoPage = '/',
+    this.house = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,12 +20,27 @@ class CustomAppBar extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(children: [
-              IconButton(
-                  onPressed: () {context.go('/');}, icon: const Icon(Icons.home_rounded , color: Color(0xff000000))),
+              if (house)
+                IconButton(
+                    onPressed: () {
+                      context.go('/');
+                    },
+                    icon: const Icon(Icons.home_rounded,
+                        color: Color(0xff000000))),
+              if (!house)
+                Container(width: 45, height: 0,),
               const Expanded(
-                  child: Text('Appnea', textAlign: TextAlign.center, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic))),
+                  child: Text('Appnea',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic))),
               IconButton(
-                  onPressed: () {context.push(infoPage);}, icon: const Icon(Icons.info , color: Color(0xff000000))),
+                  onPressed: () {
+                    context.push(infoPage);
+                  },
+                  icon: const Icon(Icons.info, color: Color(0xff000000))),
             ]),
           ),
         ));
