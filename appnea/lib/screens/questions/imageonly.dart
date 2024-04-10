@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 class ImagePage extends StatelessWidget {
   final String questNum;
   final String questText;
+  final String questTitle;
   final List<String> entries;
   final List<String> legends;
   final List<int> answerValues;
@@ -22,19 +23,28 @@ class ImagePage extends StatelessWidget {
     required this.answerValues,
     required this.back,
     required this.next,
-    this.infopage = '/'});
+    this.infopage = '/',
+    this.questTitle = ''});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor:  const Color.fromARGB(255, 238, 241, 239),
-        flexibleSpace: const CustomAppBar(),),
+          scrolledUnderElevation : 0,
+        flexibleSpace: CustomAppBar(infoPage: infopage,),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(30),
+            child: Text(questTitle + 'Pregunta #' + questNum,
+                style: const TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+          )
+      ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
       body: ListView(
             children:  [
+              const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center),),
               const Padding(padding: EdgeInsets.all(20)),
@@ -58,7 +68,7 @@ class ImagePage extends StatelessWidget {
                     fit: BoxFit.scaleDown,
                     alignment: Alignment.center,),
                       onPressed: () => {
-                      testlist.insert(int.parse(questNum) - 1,'${answerValues[index]}')
+                        testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
                     }
                   )),
                         Text(legends[index], style: const TextStyle(backgroundColor: Colors.blue)),]);
@@ -91,6 +101,7 @@ class ImagePage extends StatelessWidget {
                 heroTag: "Forward",
                 backgroundColor: const Color(0xffa9b4c2),
                 onPressed: () {
+                  print(testlist);
                   context.go(next);// Add your onPressed code here!
                 },
                 shape: const CircleBorder(),

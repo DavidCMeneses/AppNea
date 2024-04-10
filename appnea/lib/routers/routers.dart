@@ -6,6 +6,7 @@ import 'package:appnea/screens/splash_s.dart';
 import 'package:go_router/go_router.dart';
 import 'package:appnea/screens/questions/textonly.dart';
 
+import '../screens/loading_screen.dart';
 import '../screens/questions/imageonly.dart';
 
 // GoRouter configuration
@@ -15,6 +16,10 @@ final router = GoRouter(
     GoRoute(
       path: '/splash',
       builder: (context,state) => SplashScreen(),
+    ),
+    GoRoute(
+      path: '/loading',
+      builder: (context,state) => LoadingScreen(),
     ),
     GoRoute(
       name: 'home', // Optional, add name to your routes. Allows you navigate by name instead of path
@@ -132,6 +137,7 @@ final router = GoRouter(
         answerValues: [2,1,1,0],
         back: '/test/7',
         next: '/test/9',
+        infopage: '/test/info/1',
       ),
     ),
     GoRoute(
@@ -145,6 +151,7 @@ final router = GoRouter(
         answerValues: [2,1,0],
         back: '/test/8',
         next: '/test/10',
+        infopage: '/test/info/2',
       ),
     ),
     GoRoute(
@@ -158,6 +165,7 @@ final router = GoRouter(
         answerValues: [1,0],
         back: '/test/9',
         next: '/test/11',
+        infopage: '/test/info/3',
       ),
     ),
     GoRoute(
@@ -171,6 +179,7 @@ final router = GoRouter(
         answerValues: [1,0],
         back: '/test/10',
         next: '/test/12',
+        infopage: '/test/info/4',
       ),
     ),
     GoRoute(
@@ -184,6 +193,7 @@ final router = GoRouter(
         answerValues: [2,0],
         back: '/test/11',
         next: '/test/13',
+        infopage: '/test/info/5',
       ),
     ),
     GoRoute(
@@ -211,10 +221,11 @@ final router = GoRouter(
           'lib/images/FriedmanL_2B.jpg',
           'lib/images/FriedmanL_3.png',
           'lib/images/FriedmanL_4.jpg'],
-        legends: ['Clase 1', 'Clase 2a', 'Clase 2b', 'Clase 3', 'Clase 4'],
-        answerValues: [0,0,0,2,2],
+        legends: [' Clase 1 ', ' Clase 2a ', ' Clase 2b ', ' Clase 3 ', ' Clase 4 '],
+        answerValues: [0,1,2,3,4],
         back: '/test/13',
         next: '/test/15',
+        infopage: '/test/info/6',
       ),
     ),
     GoRoute(
@@ -229,8 +240,8 @@ final router = GoRouter(
           'lib/images/FriedmanA_2.jpg',
           'lib/images/FriedmanA_3.jpg',
           'lib/images/FriedmanA_4.jpg',],
-        legends: ['Tamaño 0', 'Tamaño 1', 'Tamaño 2', 'Tamaño 3', 'Tamaño 4'],
-        answerValues: [0,0,0,2,2],
+        legends: [' Tamaño 0 ', ' Tamaño 1 ', ' Tamaño 2 ', ' Tamaño 3 ', ' Tamaño 4 '],
+        answerValues: [0,1,2,3,4],
         back: '/test/14',
         next: '/test/16',
       ),
@@ -247,6 +258,7 @@ final router = GoRouter(
         answerValues: [0,0,0],
         back: '/test/15',
         next: '/test/17',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -260,6 +272,7 @@ final router = GoRouter(
         answerValues: [1,0,0],
         back: '/test/16',
         next: '/test/18',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -278,6 +291,7 @@ final router = GoRouter(
         answerValues: [0,0,1,1],
         back: '/test/17',
         next: '/test/19',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -297,6 +311,7 @@ final router = GoRouter(
         answerValues: [1,1,0,0,0],
         back: '/test/18',
         next: '/test/20',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -310,6 +325,7 @@ final router = GoRouter(
         answerValues: [1,0,0],
         back: '/test/19',
         next: '/test/21',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -329,6 +345,7 @@ final router = GoRouter(
         answerValues: [1,1,0,0,0],
         back: '/test/20',
         next: '/test/22',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -348,6 +365,7 @@ final router = GoRouter(
         answerValues: [1,1,0,0,0],
         back: '/test/21',
         next: '/test/23',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -367,6 +385,7 @@ final router = GoRouter(
         answerValues: [1,1,0,0,0],
         back: '/test/22',
         next: '/test/24',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -383,6 +402,7 @@ final router = GoRouter(
         answerValues: [0,0],
         back: '/test/23',
         next: '/test/25',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -402,6 +422,7 @@ final router = GoRouter(
         answerValues: [1,1,0,0,0],
         back: '/test/24',
         next: '/test/26',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(
@@ -414,7 +435,8 @@ final router = GoRouter(
         entries: ['Si', 'No', 'No sabe'],
         answerValues: [1,0,0],
         back: '/test/25',
-        next: '/',
+        next: '/loading',
+        questTitle: 'Cuestionario de Berlín ',
       ),
     ),
     GoRoute(

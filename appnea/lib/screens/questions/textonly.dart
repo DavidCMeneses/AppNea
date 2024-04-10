@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 class QuestionPage extends StatelessWidget {
   final String questNum;
   final String questText;
+  final String questTitle;
   final List<String> entries;
   final List<int> answerValues;
   final String back;
@@ -20,14 +21,22 @@ class QuestionPage extends StatelessWidget {
       required this.answerValues,
       required this.back,
       required this.next,
-      this.infopage = '/'});
+      this.infopage = '/',
+      this.questTitle = '' });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 238, 241, 239),
+        scrolledUnderElevation : 0,
         flexibleSpace: CustomAppBar(infoPage: infopage,),
+        bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(30),
+            child: Text(questTitle + 'Pregunta #' + questNum,
+                style: const TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+        )
       ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
@@ -56,8 +65,7 @@ class QuestionPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xffa9b4c2)),
                       onPressed: () => {
-                            testlist.insert(int.parse(questNum) - 1,
-                                '${answerValues[index]}')
+                            testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
                           },
                       child: Text(
                         entries[index],
@@ -97,6 +105,7 @@ class QuestionPage extends StatelessWidget {
                   heroTag: "Forward",
                   backgroundColor: const Color(0xffa9b4c2),
                   onPressed: () {
+                    print(testlist);
                     context.go(next); // Add your onPressed code here!
                   },
                   shape: const CircleBorder(),

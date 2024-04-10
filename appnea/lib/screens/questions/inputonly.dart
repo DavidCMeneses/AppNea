@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 class InputPage extends StatelessWidget {
   final String questNum;
   final String questText;
+  final String questTitle;
   final String inType;
   final String back;
   final String next;
@@ -20,15 +21,22 @@ class InputPage extends StatelessWidget {
       required this.back,
       required this.next,
       this.infopage = '/',
-      this.sampleText = ''});
+      this.sampleText = '',
+      this.questTitle = ''});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(255, 238, 241, 239),
-        flexibleSpace: const CustomAppBar(),
+          scrolledUnderElevation : 0,
+        flexibleSpace: CustomAppBar(infoPage: infopage,),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(30),
+            child: Text(questTitle + 'Pregunta #' + questNum,
+                style: const TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center),
+          )
       ),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
       //),
@@ -54,13 +62,11 @@ class InputPage extends StatelessWidget {
                 onFieldSubmitted: (String value) async {
                   try {
                     if (inType == 'Int') {
-                      testlist.insert(
-                          int.parse(questNum) - 1, int.parse(value).toString());
+                      testlist[int.parse(questNum) - 1] = int.parse(value).toString();
                     } else if (inType == 'Float') {
-                      testlist.insert(int.parse(questNum) - 1,
-                          double.parse(value).toString());
+                      testlist[int.parse(questNum) - 1] = double.parse(value.replaceAll(',','.')).toString();
                     } else {
-                      testlist.insert(int.parse(questNum) - 1, value);
+                      testlist[int.parse(questNum) - 1] = value;
                     }
                   } catch (value) {}
                 },
@@ -92,6 +98,7 @@ class InputPage extends StatelessWidget {
                   heroTag: "Forward",
                   backgroundColor: const Color(0xffa9b4c2),
                   onPressed: () {
+                    print(testlist);
                     context.go(next); // Add your onPressed code here!
                   },
                   shape: const CircleBorder(),

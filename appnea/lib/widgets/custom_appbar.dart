@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../globals.dart';
+
 class CustomAppBar extends StatelessWidget {
   final String infoPage;
   final bool house;
@@ -24,6 +26,7 @@ class CustomAppBar extends StatelessWidget {
                 IconButton(
                     onPressed: () {
                       context.go('/');
+                      testlist = List.generate(26, (index) => index.toString());
                     },
                     icon: const Icon(Icons.home_rounded,
                         color: Color(0xff000000))),
@@ -36,11 +39,13 @@ class CustomAppBar extends StatelessWidget {
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic))),
+              if(infoPage != '/')
               IconButton(
                   onPressed: () {
                     context.push(infoPage);
-                  },
-                  icon: const Icon(Icons.info, color: Color(0xff000000))),
+                  }, icon: const Icon(Icons.info, color: Color(0xff000000))),
+              if(infoPage == '/')
+                Container(width: 45, height: 0,),
             ]),
           ),
         ));
