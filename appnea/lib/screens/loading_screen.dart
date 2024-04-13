@@ -72,6 +72,8 @@ count = 0;
   }else if(double.parse(testlist[5]) >= 25) {
     count = count + 1;
     testlist[5] = '1';
+  }else{
+    testlist[5] = '0';
   }
   
   for(var i = 6; i<13; i++){

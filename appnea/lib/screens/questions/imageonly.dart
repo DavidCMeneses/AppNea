@@ -3,6 +3,8 @@ import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../widgets/alert_nextq.dart';
+
 
 class ImagePage extends StatelessWidget {
   final String questNum;
@@ -36,17 +38,15 @@ class ImagePage extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
             child: Text(questTitle + 'Pregunta #' + questNum,
-                style: const TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold,  color: negro),
                 textAlign: TextAlign.center),
           )
       ),
-      //appBar: AppBar(title: Text("Pregunta #$questNum"),
-      //),
       body: ListView(
             children:  [
               const Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(questText, style: const TextStyle(fontSize: qtextsize), textAlign: TextAlign.center),),
+              child: Text(questText, style: TextStyle(fontSize: qtextsize, color: negro), textAlign: TextAlign.center),),
               const Padding(padding: EdgeInsets.all(20)),
               GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -71,7 +71,7 @@ class ImagePage extends StatelessWidget {
                         testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
                     }
                   )),
-                        Text(legends[index], style: const TextStyle(backgroundColor: Colors.blue)),]);
+                        Text(legends[index], style: TextStyle(backgroundColor: gris_1, color: negro)),]);
                 },
                 //separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
               ),
@@ -81,31 +81,35 @@ class ImagePage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: BottomAppBar(
-          color:  const Color.fromARGB(255, 238, 241, 239),
+          color: blanco,
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Row(children: [
               FloatingActionButton(
                 heroTag: "Backward",
-                backgroundColor: const Color(0xffa9b4c2),
+                backgroundColor: gris_2,
                 onPressed: () {
                   context.go(back);// Add your onPressed code here!
                 },
                 shape: const CircleBorder(),
-                child: const Center(child: Icon(Icons.arrow_back_ios_rounded, color: Color(0xff000000))),
+                child: Center(child: Icon(Icons.arrow_back_ios_rounded, color: negro)),
 
               ),
               Expanded(child: Container()),
               FloatingActionButton(
                 heroTag: "Forward",
-                backgroundColor: const Color(0xffa9b4c2),
+                backgroundColor: gris_2,
                 onPressed: () {
-                  print(testlist);
-                  context.go(next);// Add your onPressed code here!
+                  if(testlist[int.parse(questNum) - 1] == '@Null'){
+                    showAlertDialogQuest(context);
+                  }else{
+                    print(testlist);
+                    context.go(next);
+                  }
                 },
                 shape: const CircleBorder(),
-                child: const Icon(Icons.arrow_forward_ios_rounded, color: Color(0xff000000),),
+                child: Icon(Icons.arrow_forward_ios_rounded, color: negro,),
               ),
             ],),
           ),

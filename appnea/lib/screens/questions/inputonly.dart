@@ -41,7 +41,7 @@ class InputPage extends StatelessWidget {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: const Color.fromARGB(255, 238, 241, 239),
+          backgroundColor: blanco,
           scrolledUnderElevation: 0,
           flexibleSpace: CustomAppBar(
             infoPage: infopage,
@@ -49,8 +49,8 @@ class InputPage extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
             child: Text(questTitle + 'Pregunta #' + questNum,
-                style: const TextStyle(
-                    fontSize: qtextsize, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: qtextsize, fontWeight: FontWeight.bold, color: negro),
                 textAlign: TextAlign.center),
           )),
       //appBar: AppBar(title: Text("Pregunta #$questNum"),
@@ -65,7 +65,7 @@ class InputPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   questText,
-                  style: const TextStyle(fontSize: qtextsize),
+                  style: TextStyle(fontSize: qtextsize, color: negro),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -74,17 +74,15 @@ class InputPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: TextFormField(
                   validator: (value) {
-                    print(value);
                     //Se pide int y no es int
                     if (inType == 'Int' && !isNumericInt(value ?? '')) {
-                      return 'eres retrasado, es int';
+                      return 'Porfavor escriba un número válido Ej: 54';
                     } else if (inType == 'Float' &&
                         !isNumericFloat(value ?? '')) {
-                      return 'eres retrasado, es float';
+                      return 'Porfavor escriba un número válido Ej: 1.86';
                     }
-                    print(value);
                      if (value == null || value.isEmpty) {
-                      return 'eres retrasado, es texto';
+                      return 'Porfavor escriba un texto válido';
                     }
                     return null;
                   },
@@ -109,7 +107,7 @@ class InputPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: BottomAppBar(
-          color: const Color.fromARGB(255, 238, 241, 239),
+          color: blanco,
           elevation: 0,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -117,19 +115,19 @@ class InputPage extends StatelessWidget {
               children: [
                 FloatingActionButton(
                   heroTag: "Backward",
-                  backgroundColor: const Color(0xffa9b4c2),
+                  backgroundColor: gris_2,
                   onPressed: () {
                     context.go(back); // Add your onPressed code here!
                   },
                   shape: const CircleBorder(),
-                  child: const Center(
+                  child: Center(
                       child: Icon(Icons.arrow_back_ios_rounded,
-                          color: Color(0xff000000))),
+                          color: negro)),
                 ),
                 Expanded(child: Container()),
                 FloatingActionButton(
                   heroTag: "Forward",
-                  backgroundColor: const Color(0xffa9b4c2),
+                  backgroundColor: gris_2,
                   onPressed: () {
                     print(testlist);
                     if (_formKey.currentState!.validate()) {
@@ -137,9 +135,9 @@ class InputPage extends StatelessWidget {
                     }
                   },
                   shape: const CircleBorder(),
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_forward_ios_rounded,
-                    color: Color(0xff000000),
+                    color: negro,
                   ),
                 ),
               ],

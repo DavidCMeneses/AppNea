@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:appnea/screens/questions/textonly.dart';
 
 import '../screens/loading_screen.dart';
+import '../screens/questions/calculator.dart';
 import '../screens/questions/imageonly.dart';
 
 // GoRouter configuration
@@ -21,6 +22,7 @@ final router = GoRouter(
       path: '/loading',
       builder: (context,state) => LoadingScreen(),
     ),
+
     GoRoute(
       name: 'home', // Optional, add name to your routes. Allows you navigate by name instead of path
       path: '/',
@@ -100,11 +102,10 @@ final router = GoRouter(
     GoRoute(
       name: 'question6',
       path: '/test/6',
-      builder: (context, state) => const InputPage(
+      builder: (context, state) => const CalculatorPage(
         questNum: '6',
         questText:
         "IMC:",
-        inType: 'Int',
         back: '/test/5',
         next: '/test/7',
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../globals.dart';
+
 class InfoAppBar extends StatelessWidget {
   final String backPage;
 
@@ -12,16 +14,18 @@ class InfoAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: const Color(0xff7D98A1),
+        color: azul,
         child: SafeArea(
           top: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(children: [
               IconButton(
-                  onPressed: () {context.pop();}, icon: const Icon(Icons.arrow_back_ios_new_rounded , color: Color(0xff000000))),
+                  onPressed: () {context.pop();}, icon: Icon(Icons.arrow_back_ios_new_rounded , color: blanco)),
               const Expanded(
-                  child: Text('Appnea', textAlign: TextAlign.center, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic))),
+                  child: Image(image: ExactAssetImage('lib/images/mini_icon.png'),
+                    height: 40,)),
+              Container(width: 55, height: 0,),
             ]),
           ),
         ));

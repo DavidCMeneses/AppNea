@@ -1,3 +1,4 @@
+import 'package:appnea/widgets/alert_house.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +17,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: const Color(0xff7D98A1),
+        color: azul,
         child: SafeArea(
           top: true,
           child: Padding(
@@ -25,25 +26,26 @@ class CustomAppBar extends StatelessWidget {
               if (house)
                 IconButton(
                     onPressed: () {
-                      context.go('/');
-                      testlist = List.generate(26, (index) => index.toString());
+                      showAlertDialogHouse(context);
                     },
-                    icon: const Icon(Icons.home_rounded,
-                        color: Color(0xff000000))),
+                    icon: Icon(Icons.home_rounded,
+                        color: blanco)),
               if (!house)
                 Container(width: 45, height: 0,),
-              const Expanded(
-                  child: Text('Appnea',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic))),
+              const Expanded(child: Image(image: ExactAssetImage('lib/images/mini_icon.png'),
+              height: 40,)),
+              //const Expanded(
+                  //child: Text('Appnea',
+                      //textAlign: TextAlign.center,
+                      //style: TextStyle(
+                          //fontSize: 25,
+                          //fontWeight: FontWeight.bold,
+                          //fontStyle: FontStyle.italic))),
               if(infoPage != '/')
               IconButton(
                   onPressed: () {
                     context.push(infoPage);
-                  }, icon: const Icon(Icons.info, color: Color(0xff000000))),
+                  }, icon: Icon(Icons.info, color: blanco)),
               if(infoPage == '/')
                 Container(width: 45, height: 0,),
             ]),

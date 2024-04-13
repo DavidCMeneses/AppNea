@@ -2,6 +2,8 @@ import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../globals.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -23,39 +25,33 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              '(Sample Logo)',
-            ),
             SizedBox(
               width: MediaQuery.of(context).size.width - 50,
-              height: 200,
+              height: 400,
               child: const Image(
-                  image: ExactAssetImage('lib/images/sample_logo.jpg')),
+                  image: ExactAssetImage('lib/images/full_page.png')),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             SizedBox(
               height: 100,
               width: MediaQuery.of(context).size.width - 50,
               child: FilledButton(
+                style: FilledButton.styleFrom(
+                    backgroundColor: gris_2 ),
                 onPressed: () {
                   context.go('/test/1');
+                  testlist = List.generate(26, (index) => '@Null');
+                  imc = 'Aún no calculado';
                 },
-                child: const Text(
-                  'Continuar',
+                child: Text(
+                  'Iniciar test',
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: blanco)
                 ),
               ),
             ),
             const Padding(padding: EdgeInsets.all(10)),
-            SizedBox(
-              height: 100,
-              width: MediaQuery.of(context).size.width - 50,
-              child: FilledButton(
-                onPressed: () {context.go('/home');},
-                child: const Text(
-                  'Info',
-                ),
-              ),
-            )
           ],
         ),
       ),

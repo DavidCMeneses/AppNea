@@ -3,41 +3,46 @@ import 'package:appnea/widgets/alert_nextq.dart';
 import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:math';
 
-class QuestionPage extends StatelessWidget {
+
+class CalculatorPage extends StatefulWidget {
   final String questNum;
   final String questText;
   final String questTitle;
-  final List<String> entries;
-  final List<int> answerValues;
   final String back;
   final String next;
   final String infopage;
 
-  const QuestionPage(
+  const CalculatorPage(
       {super.key,
-      required this.questNum,
-      required this.questText,
-      required this.entries,
-      required this.answerValues,
-      required this.back,
-      required this.next,
-      this.infopage = '/',
-      this.questTitle = '' });
+        required this.questNum,
+        required this.questText,
+        required this.back,
+        required this.next,
+        this.infopage = '/',
+        this.questTitle = '',
+      });
+
+  @override
+  State<CalculatorPage> createState() => _CalculatorState();
+}
+
+class _CalculatorState extends State<CalculatorPage> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 238, 241, 239),
-        scrolledUnderElevation : 0,
-        flexibleSpace: CustomAppBar(infoPage: infopage,),
-        bottom: PreferredSize(
+          backgroundColor: const Color.fromARGB(255, 238, 241, 239),
+          scrolledUnderElevation : 0,
+          flexibleSpace: CustomAppBar(infoPage: widget.infopage,),
+          bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
-            child: Text(questTitle + 'Pregunta #' + questNum,
+            child: Text(widget.questTitle + 'Pregunta #' + widget.questNum,
                 style: TextStyle(fontSize: qtextsize, fontWeight: FontWeight.bold, color: negro),
                 textAlign: TextAlign.center),
-        )
+          )
       ),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,40 +50,36 @@ class QuestionPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Text(questText,
-                  style: TextStyle(fontSize: qtextsize, color: negro),
+              child: Text(widget.questText,
+                  style: TextStyle(fontSize: 25, color: negro),
                   textAlign: TextAlign.center),
             ),
             const Padding(padding: EdgeInsets.all(20)),
-            ListView.separated(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(20),
-              itemCount: entries.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Center(
-                    child: SizedBox(
-                  width: 600,
-                  height: 50,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: gris_1 ),
-                      onPressed: () => {
-                            testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
-                          },
-                      child: Text(
-                        entries[index],
-                        style: TextStyle(
-                            color: negro),
-                      )),
-                ));
-              },
-              separatorBuilder: (BuildContext context, int index) =>
-                  Divider(
-                color: blanco
-              ), //Colocar color del fondo de la app
+
+            Text(imc,
+              style: TextStyle(fontSize: 20, color: negro),
+              textAlign: TextAlign.center,),
+            const Padding(padding: EdgeInsets.all(20)),
+            Center(child:
+            SizedBox(
+              width: 320,
+              height: 50,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                backgroundColor: gris_1 ),
+                onPressed: (){
+                  setState(() {
+                    imc =  (double.parse(testlist[4])/pow(double.parse(testlist[3]),2)).toStringAsFixed(2);
+                    testlist[int.parse(widget.questNum) - 1] = imc;
+                  });
+                },
+                child: Text('Presione para calcular IMC',
+                  style: TextStyle(color: negro,))
             ),
-          ]),
+            )
+            )
+          ]
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 20),
         child: BottomAppBar(
@@ -92,7 +93,7 @@ class QuestionPage extends StatelessWidget {
                   heroTag: "Backward",
                   backgroundColor: gris_2,
                   onPressed: () {
-                    context.go(back); // Add your onPressed code here!
+                    context.go(widget.back); // Add your onPressed code here!
                   },
                   shape: const CircleBorder(),
                   child: Center(
@@ -104,11 +105,11 @@ class QuestionPage extends StatelessWidget {
                   heroTag: "Forward",
                   backgroundColor: gris_2,
                   onPressed: () {
-                    if(testlist[int.parse(questNum) - 1] == '@Null'){
+                    if(testlist[int.parse(widget.questNum) - 1] == '@Null'){
                       showAlertDialogQuest(context);
                     }else{
                       print(testlist);
-                      context.go(next);
+                      context.go(widget.next);
                     }
                   },
                   shape: const CircleBorder(),
