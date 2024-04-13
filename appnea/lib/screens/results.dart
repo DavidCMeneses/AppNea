@@ -1,10 +1,6 @@
-import 'dart:typed_data';
-
 import 'package:appnea/globals.dart';
 import 'package:appnea/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
 
 Color getColor(String resultado){
   if(resultado == 'ALTO'){
@@ -21,12 +17,10 @@ class ResultsPage extends StatelessWidget {
   final String cuerpo;
 
 
-  ResultsPage({super.key,
+  const ResultsPage({super.key,
     required this.resultado,
     required this.cuerpo,
   });
-
-  final ScreenshotController screenshotController = ScreenshotController();
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +77,7 @@ class ResultsPage extends StatelessWidget {
                 FloatingActionButton(
                   heroTag: "Forward",
                   backgroundColor: gris_2,
-                  onPressed: () async {
-                    final image = await screenshotController.captureFromWidget(
-                        Scaffold());
-                    Share.shareXFiles([XFile.fromData(image, mimeType: "png")]);
-                    },
+                  onPressed: () {},
                   shape: const CircleBorder(),
                   child: Icon(
                     Icons.mobile_screen_share_rounded,
