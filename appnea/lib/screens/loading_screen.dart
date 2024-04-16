@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'dart:math';
 
+import 'package:flutter/scheduler.dart';
+
 String resultCheck() {
   var resultList = [0,0,0];
   var tempBerlinList = [0,0,0];
@@ -142,11 +144,13 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
     Timer(const Duration(seconds: 3), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage(
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ResultsPage(
         resultado: resultCheck(),
         cuerpo: bodyBuilder(),
       )));
+    });
     });
 
     return MaterialApp(
@@ -154,10 +158,10 @@ class LoadingScreen extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: SizedBox(
-            width: MediaQuery.of(context).size.width - 50,
-            height: 200,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: const Image(
-                image: ExactAssetImage('lib/images/sample_logo.jpg')),
+                image: ExactAssetImage('lib/images/full_page.png')),
           ),
         ),
       ),

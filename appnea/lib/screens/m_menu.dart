@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: MediaQuery.of(context).size.width - 50,
               height: 400,
               child: const Image(
-                  image: ExactAssetImage('lib/images/full_page.png')),
+                  image: ExactAssetImage('lib/images/logo_blue.png')),
             ),
             const Padding(padding: EdgeInsets.all(10)),
             SizedBox(

@@ -69,7 +69,8 @@ class _CalculatorState extends State<CalculatorPage> {
                 backgroundColor: gris_1 ),
                 onPressed: (){
                   setState(() {
-                    imc =  (double.parse(testlist[4])/pow(double.parse(testlist[3]),2)).toStringAsFixed(2);
+                    try{imc = (double.parse(testlist[4])/pow(double.parse(testlist[3]),2)).toStringAsFixed(2);}
+                    catch (value){imc = '100';}
                     testlist[int.parse(widget.questNum) - 1] = imc;
                   });
                 },

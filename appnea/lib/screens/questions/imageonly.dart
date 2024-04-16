@@ -59,21 +59,27 @@ class ImagePage extends StatelessWidget {
                 itemCount: entries.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Column(
-                      children: [Expanded(child:IconButton(
-                      iconSize: 200,
-                      padding: const EdgeInsets.all(0.5),
-                    icon: Image(
-                    image: ExactAssetImage(entries[index]),
-                    color: null,
-                    fit: BoxFit.scaleDown,
-                    alignment: Alignment.center,),
-                      onPressed: () => {
-                        testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
-                    }
-                  )),
+                      children: [
+                        Expanded(
+                          child: Container(
+                            width: 200,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(image: ExactAssetImage(entries[index]))
+                            ),
+                              child: TextButton(
+                                style: TextButton.styleFrom(
+                                  padding: EdgeInsets.all(100),
+                                ),
+                                child: Text(''),
+                                onPressed: () => {
+                                  testlist[int.parse(questNum) - 1] = '${answerValues[index]}'
+                                },
+                              )
+                          ),
+                        ),
                         Text(legends[index], style: TextStyle(backgroundColor: gris_1, color: negro)),]);
                 },
-                //separatorBuilder: (BuildContext context, int index) => const Divider(color: Colors.white,), //Colocar color del fondo de la app
               ),
         
             ]
