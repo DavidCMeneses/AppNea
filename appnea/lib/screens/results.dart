@@ -64,31 +64,6 @@ class ResultsPage extends StatelessWidget {
                 child: Text(cuerpo, style: const TextStyle(fontSize: 18.0),  textAlign: TextAlign.center,),)
             ],
           ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 20),
-        child: BottomAppBar(
-          color: blanco,
-          elevation: 0,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(child: Container()),
-                FloatingActionButton(
-                  heroTag: "Forward",
-                  backgroundColor: gris_2,
-                  onPressed: () {},
-                  shape: const CircleBorder(),
-                  child: Icon(
-                    Icons.mobile_screen_share_rounded,
-                    color: negro,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

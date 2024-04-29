@@ -6,11 +6,13 @@ import 'package:collection/collection.dart';
 import 'dart:math';
 
 import 'package:flutter/scheduler.dart';
+import 'package:go_router/go_router.dart';
 
 String resultCheck() {
   var resultList = [0,0,0];
   var tempBerlinList = [0,0,0];
   var count = 0;
+  var condition = 0;
 
   //Berlin
   for(var i = 16; i<21; i++){
@@ -25,6 +27,7 @@ String resultCheck() {
   for(var i = 21; i<25; i++){
     count = count + int.parse(testlist[i]);
   }
+  count = count - int.parse(testlist[23]);
   if(count > 1){
     tempBerlinList[1] = 1;
   }
@@ -35,6 +38,7 @@ String resultCheck() {
   if(tempBerlinList.sum > 1){
     resultList[0] = 2;
   }
+
 //Friedman
 
 count = 0;
@@ -55,7 +59,7 @@ count = 0;
     resultList[1] = 1;
   }
 
-  // Normal
+// Normal
   count = 0;
 
   if(int.parse(testlist[1]) >= 50){
@@ -64,6 +68,8 @@ count = 0;
   }else if(int.parse(testlist[1]) >= 30){
     count = count + 1;
     testlist[1] = '1';
+  }else{
+    testlist[1] = '0';
   }
 
   count = count + int.parse(testlist[2]);
@@ -77,12 +83,25 @@ count = 0;
   }else{
     testlist[5] = '0';
   }
-  
-  for(var i = 6; i<13; i++){
+
+  for(var i = 1; i<3; i++){
     count = count + int.parse(testlist[i]);
+    if(int.parse(testlist[i]) >  1){
+      condition = condition + 2;
+    }
+  }
+  for(var i = 5; i<13; i++){
+    count = count + int.parse(testlist[i]);
+    if(int.parse(testlist[i]) >  1){
+      condition = condition + 2;
+    }
   }
 
   if((int.parse(testlist[2]) == 2) && (int.parse(testlist[1]) == 2)){
+    count = count + 1;
+  }
+
+  if(condition > 5){
     count = count + 1;
   }
 
@@ -146,7 +165,7 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SchedulerBinding.instance.addPostFrameCallback((_) {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ResultsPage(
+      Navigator.push(context, MaterialPageRoute(builder: (context) => ResultsPage(
         resultado: resultCheck(),
         cuerpo: bodyBuilder(),
       )));
@@ -161,7 +180,7 @@ class LoadingScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: const Image(
-                image: ExactAssetImage('lib/images/full_page.png')),
+                image: ExactAssetImage('lib/images/nlogo_blanco_fondo.jpeg')),
           ),
         ),
       ),

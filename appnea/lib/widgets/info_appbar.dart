@@ -23,7 +23,7 @@ class InfoAppBar extends StatelessWidget {
               IconButton(
                   onPressed: () {context.pop();}, icon: Icon(Icons.arrow_back_ios_new_rounded , color: blanco)),
               const Expanded(
-                  child: Image(image: ExactAssetImage('lib/images/mini_icon.png'),
+                  child: Image(image: ExactAssetImage('lib/images/nlogo_azul.jpeg'),
                     height: 40,)),
               Container(width: 55, height: 0,),
             ]),

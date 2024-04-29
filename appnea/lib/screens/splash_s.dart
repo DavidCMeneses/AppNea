@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: const Image(
-              image: ExactAssetImage('lib/images/full_page.png')),
+              image: ExactAssetImage('lib/images/nlogo_azul_fondo.jpeg')),
           ),
         ),
       ),

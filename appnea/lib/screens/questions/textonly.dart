@@ -13,6 +13,7 @@ class QuestionPage extends StatelessWidget {
   final String back;
   final String next;
   final String infopage;
+  final List<String> skipQuest;
 
   const QuestionPage(
       {super.key,
@@ -23,7 +24,8 @@ class QuestionPage extends StatelessWidget {
       required this.back,
       required this.next,
       this.infopage = '/',
-      this.questTitle = '' });
+      this.questTitle = '',
+      this.skipQuest = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -104,11 +106,26 @@ class QuestionPage extends StatelessWidget {
                   heroTag: "Forward",
                   backgroundColor: gris_2,
                   onPressed: () {
+
                     if(testlist[int.parse(questNum) - 1] == '@Null'){
                       showAlertDialogQuest(context);
                     }else{
-                      print(testlist);
-                      context.go(next);
+                      if(skipQuest.length > 1){
+                        if(testlist[int.parse(questNum) - 1] == skipQuest[0]){
+                          for(var i=0; i<int.parse(skipQuest[3]); i++){
+                            testlist[int.parse(questNum) + i] = skipQuest[2];
+                          }
+                          print(testlist);
+                          context.go(skipQuest[1]);
+                        }else{
+                          print(testlist);
+                          context.go(next);
+                        }
+                      }else{
+                        print(testlist);
+                        context.go(next);
+                      }
+
                     }
                   },
                   shape: const CircleBorder(),

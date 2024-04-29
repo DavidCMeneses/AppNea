@@ -58,6 +58,7 @@ final router = GoRouter(
         back: '/test/1',
         next: '/test/3',
         sampleText: 'Ej: 54',
+        infopage: '/test/info/7',
       ),
     ),
     GoRoute(
@@ -71,6 +72,7 @@ final router = GoRouter(
         answerValues: [2,1],
         back: '/test/2',
         next: '/test/4',
+        infopage: '/test/info/8',
       ),
     ),
     GoRoute(
@@ -108,6 +110,7 @@ final router = GoRouter(
         "IMC:",
         back: '/test/5',
         next: '/test/7',
+        infopage: '/test/info/9',
       ),
     ),
     GoRoute(
@@ -122,6 +125,7 @@ final router = GoRouter(
         back: '/test/6',
         next: '/test/8',
         infopage: '/test/info/1',
+        skipQuest: ['0', '/test/9', '0', '1'],
       ),
     ),
     GoRoute(
@@ -208,6 +212,7 @@ final router = GoRouter(
         answerValues: [1,0,0],
         back: '/test/12',
         next: '/test/14',
+        infopage: '/test/info/10',
       ),
     ),
     GoRoute(
@@ -245,6 +250,7 @@ final router = GoRouter(
         answerValues: [0,1,2,3,4],
         back: '/test/14',
         next: '/test/16',
+        infopage: '/test/info/11',
       ),
     ),
     // Aquí emíeza el cuestionario de Berlín
@@ -260,6 +266,7 @@ final router = GoRouter(
         back: '/test/15',
         next: '/test/17',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -274,6 +281,8 @@ final router = GoRouter(
         back: '/test/16',
         next: '/test/18',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
+        skipQuest: ['0', '/test/21', '0', '3'],
       ),
     ),
     GoRoute(
@@ -293,6 +302,7 @@ final router = GoRouter(
         back: '/test/17',
         next: '/test/19',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -313,6 +323,7 @@ final router = GoRouter(
         back: '/test/18',
         next: '/test/20',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -327,6 +338,7 @@ final router = GoRouter(
         back: '/test/19',
         next: '/test/21',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -347,6 +359,7 @@ final router = GoRouter(
         back: '/test/20',
         next: '/test/22',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -367,6 +380,7 @@ final router = GoRouter(
         back: '/test/21',
         next: '/test/23',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -387,6 +401,7 @@ final router = GoRouter(
         back: '/test/22',
         next: '/test/24',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -400,10 +415,12 @@ final router = GoRouter(
           'Si',
           'No'
         ],
-        answerValues: [0,0],
+        answerValues: [1,0],
         back: '/test/23',
         next: '/test/25',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
+        skipQuest: ['0', '/test/26', '0', '1'],
       ),
     ),
     GoRoute(
@@ -424,6 +441,7 @@ final router = GoRouter(
         back: '/test/24',
         next: '/test/26',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -438,6 +456,7 @@ final router = GoRouter(
         back: '/test/25',
         next: '/loading',
         questTitle: 'Cuestionario de Berlín ',
+        infopage: '/test/info/12',
       ),
     ),
     GoRoute(
@@ -461,10 +480,10 @@ El odontólogo durante la consulta odontológica puede identificar factores de r
 El tabaquismo se considera un factor de riesgo para el desarrollo de episodios de apnea dado que este hábito, de acuerdo a la frecuencia y a la cantidad con la que se realice, produce inflamación de las mucosas respiratorias, obstruyendo la vía aérea superior. (1)
 Los pacientes fumadores tienen el doble de probabilidad de desarrollar AOS que los pacientes que no fuman o dejaron dicho hábito. (2) \v
 
-Referencia \v
+Referencias \v
 \t 1. Yosunkaya S, Kutlu R, Vatansev H. Effects of smokıng on patıents wıth obstructıve sleep apnea syndrome. Clin Respir J. febrero de 2021;15(2):147-53. \v
 \t 2. Kashyap R, Bowman TJ. Higher Prevalence of Smoking in Patients Diagnosed as Having Obstructive Sleep Apnea. :6. 
-
+\t 3. Ioannidou D, Kalamaras G, Kotoulas SC, Pataka A. Smoking and Obstructive Sleep Apnea: Is There An Association between These Cardiometabolic Risk Factors?-Gender Analysis. Medicina (Kaunas). 2021 Oct 20;57(11):1137. doi: 10.3390/medicina57111137. PMID: 34833356; PMCID: PMC8621446. \v
           """)
     ),
     GoRoute(
@@ -475,8 +494,9 @@ Referencia \v
             infoBody: """       
 El consumo de alcohol afecta el tono muscular de la musculatura orofaríngea relajando la base de la lengua, induciendo el colapso de la vía aérea superior. A su vez, su ingesta afecta a los receptores GABA, generando la depresión del impulso respiratorio, lo que favorece la aparición de la Apnea Central del Sueño. (1)\v
 
-Referencia \v
-\t 1. Burgos-Sanchez C, Jones NN, Avillion M, Gibson SJ, Patel JA, Neighbors J, et al. Impact of Alcohol Consumption on Snoring and Sleep Apnea: A Systematic Review and Meta-analysis. Otolaryngol Neck Surg. diciembre de 2020;163(6):1078-86.\v
+Referencias \v
+\t 1. Burgos-Sanchez C, Jones NN, Avillion M, Gibson SJ, Patel JA, Neighbors J, et al. Impact of Alcohol Consumption on Snoring and Sleep Apnea: A Systematic Review and Meta-analysis. Otolaryngol Neck Surg. diciembre de 2020;163(6):1078-86. \v
+\t 2. Choudhury A, Routray D, Swain S, Das AK. Prevalence and risk factors of people at-risk of obstructive sleep apnea in a rural community of Odisha, India: a community based cross-sectional study. Sleep Med. 2019 Jun;58:42-47. doi: 10.1016/j.sleep.2019.03.014. Epub 2019 Mar 28. PMID: 31078079.  \v
           """)
     ),
     GoRoute(
@@ -485,10 +505,10 @@ Referencia \v
         builder: (context, state) => const QuestInfo(questPage: '/',
             infoTitle: 'Respiración oral',
             infoBody: """       
-La respiración oral es un indicador de una vía aérea superior colapsada dado que refleja la dificultad del paciente al respirar por la nariz. Se relaciona la respiración oral con otros factores de riesgo de AOS como la macroglosia, el tamaño aumentado de las amígdalas y otros hallazgos de la orofaringe. (1)\v
+La respiración oral es un hallazgo que surge como consecuencia de la obstrucción de la vía aérea superior, puesto que esta permite una velocidad del flujo del aire mayor a comparación con la respiración nasal con la boca abierta o cerrada; Se ha relacionado la presencia de la respiración oral con el estrechamiento de la luz faríngea y una disminución del diámetro retrogloso, lo que favorece el colapso de la vía aérea superior, conllevando a la obstrucción de esta. Además,  se relaciona la respiración oral con otros factores de riesgo de AOS como la macroglosia, el tamaño aumentado de las amígdalas y otros hallazgos de la orofaringe. \v
 
-Referencia \v
-\t 1. Realpe MFR. Evaluación semiológica de enfermedad oral en sujetos con apnea obstructiva del sueño. :69. \v
+Referencias \v
+\t 1. Suzuki M, Tanuma T. The effect of nasal and oral breathing on airway collapsibility in patients with obstructive sleep apnea: Computational fluid dynamics analyses. PLoS One. 2020 Apr 13;15(4):e0231262. doi: 10.1371/journal.pone.0231262. PMID: 32282859; PMCID: PMC7153879.  \v
           """)
     ),
     GoRoute(
@@ -497,9 +517,11 @@ Referencia \v
         builder: (context, state) => const QuestInfo(questPage: '/',
             infoTitle: 'Bruxismo',
             infoBody: """       
-El bruxismo es una alteración en la actividad de la musculatura de la masticación que se caracteriza por rechinar y apretar los dientes. No se termina de definir en términos de causalidad la relación de estos dos. Sin embargo, comparten factores de riesgo como el alcoholismo y consumo de tabaco. 
-Se ha evidenciado que el bruxismo se evidencia en estadios leves a moderados de apnea obstructiva del sueño. \v
+El bruxismo se define por una actividad repetitiva de los músculos de la mandíbula, caracterizada por el apretamiento y/o rechinamiento de los dientes debido a una presión excesiva sobre la mandíbula. Este trastorno se ha observado en asociación con la Apnea Obstructiva del Sueño (AOS), dando lugar a diversas teorías que intentan explicar esta coexistencia. Una de estas teorías sugiere que el bruxismo puede actuar como un mecanismo protector contra la AOS al realizar movimientos protrusivos de la mandíbula, lo que restauraría la permeabilidad de las vías respiratorias superiores después de un evento obstructivo del sueño, protegiendo así el ciclo del sueño de una disminución en los niveles de oxígeno. Otra hipótesis considera que el bruxismo es un evento motor fisiológico necesario para lubricar las estructuras orofaríngeas y reposicionar la mandíbula durante el sueño. Además, se ha observado que en un 55% de los casos, el bruxismo precede a la AOS, mientras que en un 25% de los casos, un evento de AOS precede al bruxismo, lo que subraya la estrecha relación entre ambos trastornos. \v
 
+Referencias \v
+
+\t 1. González González A, Montero J, Gómez Polo C. Sleep Apnea-Hypopnea Syndrome and Sleep Bruxism: A Systematic Review. J Clin Med. 2023 Jan 23;12(3):910. doi: 10.3390/jcm12030910. PMID: 36769558; PMCID: PMC9918154.  \v
           """)
     ),
     GoRoute(
@@ -510,6 +532,9 @@ Se ha evidenciado que el bruxismo se evidencia en estadios leves a moderados de 
             infoBody: """       
 El edentulismo y la AOS comparten la edad avanzada como factor de riesgo. Los cambios anatómicos que genera la pérdida dental pueden reducir el espacio retrolingual y comprometer la permeabilidad de las vías respiratorias. Los mismos cambios alteran la función de los músculos dilatadores de la faringe, aumentando la resistencia de la vía aérea superior, elevando el riesgo de su colapso y la aparición de episodios de apnea (43).  \v
 
+Referencias \v
+
+\t 1. Tripathi, A., Bagchi, S., Singh, J., Tripathi, S., Gupta, NK y Arora, V. (2017). Incidencia de apnea obstructiva del sueño en pacientes ancianos desdentados y posible correlación entre la serotonina sérica y el índice de apnea-hipopnea. Revista de Prostodoncia. doi:10.1111/jopr.12654  \v
          """)
     ),
     GoRoute(
@@ -518,8 +543,106 @@ El edentulismo y la AOS comparten la edad avanzada como factor de riesgo. Los ca
         builder: (context, state) => const QuestInfo(questPage: '/',
             infoTitle: 'Friedman (Posición de la lengua)',
             infoBody: """       
-Friedman et al. en 1999. Clasificación derivada de las observaciones descritas en la Clasificación de Mallampati, pero enfocadas esta vez para su uso en la medicina del sueño. Esta permite obtener una aproximación a la presencia de una obstrucción a nivel hipofaringeo Se determina al evaluar la lengua en su posición natural y en reposo dentro de la boca.\v
+Friedman et al. 1999. La posición y el tamaño de la lengua se ha considerado como un factor determinante para el desarrollo de AOS, ya que un aumento de tamaño o una posición retruida de esta pueden favorecer el colapso de la vía aérea superior. Friedman desarrolló una clasificación para evaluar este aspecto enfocado en la medicina dental del sueño. Para su evaluación el paciente se posiciona de manera neutral, abriendo la boca sin sacar la lengua, de este modo permitiendo la exploración de la lengua en posición natural. Según los hallazgos observados durante el examen, la posición de la lengua se clasifica en cinco categorías: \v
 
+* Clase 1: Se visualizan totalmente la úvula y las amígdalas.  \v
+* Clase 2a: Se visualiza la úvula, pero sólo parte de las amígdalas.  \v
+* Clase 2b: Se observa el paladar blando completo hasta la base de la úvula, pero sin observarse la úvula ni las amígdalas.  \v
+* Clase 3: Se observa el sector anterior del paladar blando, pero se dificulta la visualización del sector posterior.  \v
+* Clase 4: Sólo se observa el paladar duro.  \v
+
+Referencias \v
+
+\t Friedman, M. (2009). Friedman tongue position and the staging of obstructive sleep apnea/hypopnea syndrome. Sleep Apnea and Snoring, 104–110. doi:10.1016/b978-1-4160-3112-3.00016-4 \v
+
+
+         """)
+    ),
+    GoRoute(
+        name: 'info7',
+        path: '/test/info/7',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'Edad',
+            infoBody: """       
+La edad se reconoce como un factor de riesgo significativo en el desarrollo de la Apnea Obstructiva del Sueño (AOS). Aunque esta asociación es bien conocida, aún persisten interrogantes sobre la naturaleza exacta de esta relación con este trastorno. Investigaciones recientes han destacado que, a medida que las personas envejecen, experimentan cambios en la anatomía y la función de los músculos dilatadores faríngeos. Estos cambios pueden incluir una disminución en el tamaño de las vías respiratorias, la acumulación de grasa alrededor de la faringe y variaciones en el tamaño del paladar blando, entre otros aspectos anatómicos. Estas alteraciones conllevan a una reducción del reflejo de presión negativa durante el sueño, lo que aumenta la probabilidad de colapso de las vías respiratorias y, por ende, el riesgo de desarrollar AOS en personas de edad avanzada.\v
+
+Referencias \v
+\t 1. Malhotra A, Huang Y, Fogel R, Lazic S, Pillar G, Jakab M, Kikinis R, White DP. Aging influences on pharyngeal anatomy and physiology: the predisposition to pharyngeal collapse. Am J Med. 2006 Jan;119(1):72.e9-14. doi: 10.1016/j.amjmed.2005.01.077. PMID: 16431197; PMCID: PMC2287192. \v
+ 
+         """)
+    ),
+    GoRoute(
+        name: 'info8',
+        path: '/test/info/8',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'Sexo',
+            infoBody: """       
+La Apnea Obstructiva del Sueño (AOS) ha sido asociada con una predisposición en el sexo masculino. Aunque el papel exacto del sexo en este trastorno aún no está completamente claro, se sugiere que esta relación puede deberse a la mayor prevalencia de obesidad en los hombres, así como a diferencias anatómicas en las vías respiratorias, con una mayor longitud en los hombres que podría aumentar la susceptibilidad al colapso de la vía aérea. Sin embargo, es importante destacar que existen diferencias en la presentación clínica de la AOS entre hombres y mujeres, con las últimas siendo más propensas a experimentar síntomas como insomnio, fatiga y dolores de cabeza en lugar de ronquidos y apnea. Estas diferencias en el perfil clínico pueden conducir a una subestimación de la AOS en mujeres, lo que sugiere un posible sesgo literario asociado con un subdiagnóstico en ciertos grupos poblacionales.\v
+
+Referencias \v
+\t 1. Jordan AS, McSharry DG, Malhotra A. Adult obstructive sleep apnoea. Lancet. 2014 Feb 22;383(9918):736-47. doi: 10.1016/S0140-6736(13)60734-5. Epub 2013 Aug 2. PMID: 23910433; PMCID: PMC3909558. \v
+\t 2. Bonsignore MR, Saaresranta T, Riha RL. Sex differences in obstructive sleep apnoea. Eur Respir Rev. 2019 Nov 6;28(154):190030. doi: 10.1183/16000617.0030-2019. PMID: 31694839; PMCID: PMC9488655. \v
+\t 3. oannidou D, Kalamaras G, Kotoulas SC, Pataka A. Smoking and Obstructive Sleep Apnea: Is There An Association between These Cardiometabolic Risk Factors?-Gender Analysis. Medicina (Kaunas). 2021 Oct 20;57(11):1137. doi: 10.3390/medicina57111137. PMID: 34833356; PMCID: PMC8621446. \v
+         """)
+    ),
+    GoRoute(
+        name: 'info9',
+        path: '/test/info/9',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'IMC',
+            infoBody: """       
+La obesidad, caracterizada por un exceso de grasa corporal, se ha asociado repetidamente en la literatura médica como un factor de riesgo para diversas enfermedades cardiovasculares y endocrinas. Además, se ha establecido una relación directa entre la obesidad y los trastornos del sueño. Este vínculo se atribuye al depósito de tejido adiposo en el área del cuello, lo que puede provocar una compresión parcial o total de las vías respiratorias superiores durante el sueño, resultando en una obstrucción del flujo de aire y la aparición de ronquidos. La evaluación de esta condición se realiza mediante el índice de masa corporal (IMC), y los índices que indican sobrepeso u obesidad suelen asociarse con un riesgo intermedio-alto para desarrollar Apnea Obstructiva del Sueño (AOS).\v
+
+Referencias \v
+\t 1. Vicente-Herrero, M. T., Capdevila García, L., Bellido Cambrón, M. del C., Ramírez Iñiguez de la Torre, M. V., & Lladosa Marco, S. (2017). Riesgo cardiovascular y obesidad en el síndrome de apnea del sueño valorado con el cuestionario Stop-Bang. Endocrinología, Diabetes y Nutrición, 64(10), 544–551. doi:10.1016/j.endinu.2017.09.005. \v
+ 
+         """)
+    ),
+    GoRoute(
+        name: 'info10',
+        path: '/test/info/10',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'Posición mandibular',
+            infoBody: """       
+El tamaño y la posición de la mandíbula se ha relacionado con el desarrollo de la Apnea Obstructiva del Sueño (AOS) ya que se ha observado que los pacientes con micrognatismo, retrognatismo mandibular o una combinación de ambos presentan vías aéreas superiores más estrechas, lo que facilita el colapso de estas vías durante el sueño.\v
+Además, se ha establecido una relación significativa entre la posición de la mandíbula y la distancia con el hueso hioides. Sugiriendo que un tamaño reducido del hueso hioides en términos de longitud anteroposterior y transversal se correlaciona con los casos más graves de AOS. Además, su posición se ha relacionado con la acumulación de grasa en la región faríngea, lo que puede desplazar la lengua hacia atrás y reducir la permeabilidad de las vías respiratorias superiores. No obstante, para la evaluación de este factor se requiere de exámenes complementarios. \v
+
+Referencias \v
+
+\t 1. Liao FC, Zhang T, Huang XP, Sangwatanakul J, Li HY, Zhou N. Correlation analysis of upper airway morphology in patients with obstructive sleep apnea and anatomically small retruded mandibles. CRANIO®. 23 de diciembre de 2020;1-7.  \v
+\t 2. Aihara K, Oga T, Harada Y, Chihara Y, Handa T, Tanizawa K, et al. Analysis of anatomical and functional determinants of obstructive sleep apnea. Sleep Breath. junio de 2012;16(2):473-81.  \v
+         """)
+    ),
+    GoRoute(
+        name: 'info11',
+        path: '/test/info/11',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'Friedman (Tamaño de las amigdalas)',
+            infoBody: """       
+Friedman et al. 1999. El tamaño de la lengua se ha considerado como un factor determinante para el desarrollo de AOS, ya que un aumento en su tamaño puede favorecer la obstrucción de la vía aérea superior. Friedman desarrolló una clasificación para evaluar este aspecto enfocado en la medicina dental del sueño. Para su evaluación el paciente se posiciona de manera neutral, abriendo la boca sin sacar la lengua, de este modo permitiendo la exploración de la lengua en posición natural. Según los hallazgos observados durante el examen, el  tamaño de las amigdalas se clasifica en cinco categorías: \v
+
+* Tamaño 0: Amígdalas extirpadas (Amigdalectomía).  \v
+* Tamaño 1: Amígdalas contenidas dentro de los pilares. \v  
+* Tamaño 2: Amígdalas se extienden hasta los pilares.  \v
+* Tamaño 3: Amígdalas se extienden más allá de los pilares, pero no hasta la línea media. \v
+* Tamaño 4: Amígdalas se extienden hasta la línea media. \v
+
+Referencias \v
+\t 1. Friedman, M. (2009). Friedman tongue position and the staging of obstructive sleep apnea/hypopnea syndrome. Sleep Apnea and Snoring, 104–110. doi:10.1016/b978-1-4160-3112-3.00016-4   \v
+ 
+         """)
+    ),
+    GoRoute(
+        name: 'info12',
+        path: '/test/info/12',
+        builder: (context, state) => const QuestInfo(questPage: '/',
+            infoTitle: 'Cuestionario de Berlín',
+            infoBody: """       
+El cuestionario de Berlín (BQ) es un cuestionario que se organiza en tres categorías, cada una dirigida a identificar diferentes aspectos relacionados con los trastornos respiratorios durante el sueño. La primera categoría aborda episodios de apnea y ronquidos, evaluando su frecuencia e intensidad. La segunda categoría se centra en la fatiga y somnolencia, mientras que la tercera categoría examina la presión arterial y el índice de masa corporal (IMC). El cuestionario clasifica el riesgo como alto o bajo según la presencia de síntomas persistentes en cada categoría. Se considera alto riesgo aquellos pacientes que presentan resultados positivos en al menos dos categorías, mientras que aquellos con síntomas positivos en una o ninguna categoría se clasifican como bajo riesgo para la Apnea Obstructiva del Sueño (AOS). \v
+
+Referencias \v
+\t 1. Netzer NC, Stoohs RA, Netzer CM, Clark K, Strohl KP. Using the Berlin Questionnaire to identify patients at risk for the sleep apnea syndrome. Ann Intern Med. 1999 Oct 5;131(7):485-91. doi: 10.7326/0003-4819-131-7-199910050-00002. PMID: 10507956. \v
+ 
          """)
     ),
 

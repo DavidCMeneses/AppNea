@@ -32,7 +32,7 @@ class CustomAppBar extends StatelessWidget {
                         color: blanco)),
               if (!house)
                 Container(width: 45, height: 0,),
-              const Expanded(child: Image(image: ExactAssetImage('lib/images/mini_icon.png'),
+              const Expanded(child: Image(image: ExactAssetImage('lib/images/nlogo_azul.jpeg'),
               height: 40,)),
               //const Expanded(
                   //child: Text('Appnea',
